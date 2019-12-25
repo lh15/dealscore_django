@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="201e0378-433b-417a-bea7-46f8fb02f6c3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dealscore_django.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealscore/celery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/migrations/0002_deallink_description.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/tasks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dealsengine/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangox_project/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangox_project/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangox_project/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/djangox_project/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_base.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1VSZqdldH7zCbTwwMNId8vOYp2m" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager" selected="Django server.dealscore_django">
+    <configuration name="tasks" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="dealscore_django" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dealsengine" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dealsengine/tasks.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dealscore_django" type="Python.DjangoServer" factoryName="Django server">
+      <module name="dealscore_django" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.tasks" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="201e0378-433b-417a-bea7-46f8fb02f6c3" name="Default Changelist" comment="" />
+      <created>1577248648103</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1577248648103</updated>
+      <workItem from="1577248650272" duration="7080000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="522" y="258" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577253449387">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state x="522" y="258" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.850@0.23.1440.850" timestamp="1577253449387" />
+    <state width="1440" height="438" key="DebuggerActiveHint" timestamp="1577255316285">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1440" height="438" key="DebuggerActiveHint/0.23.1440.850@0.23.1440.850" timestamp="1577255316285" />
+    <state width="1186" height="228" key="GridCell.Tab.0.bottom" timestamp="1577256032858">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1186" height="228" key="GridCell.Tab.0.bottom/0.23.1440.850@0.23.1440.850" timestamp="1577256032858" />
+    <state width="1186" height="228" key="GridCell.Tab.0.center" timestamp="1577256032858">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1186" height="228" key="GridCell.Tab.0.center/0.23.1440.850@0.23.1440.850" timestamp="1577256032858" />
+    <state width="1186" height="228" key="GridCell.Tab.0.left" timestamp="1577256032857">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1186" height="228" key="GridCell.Tab.0.left/0.23.1440.850@0.23.1440.850" timestamp="1577256032857" />
+    <state width="1186" height="228" key="GridCell.Tab.0.right" timestamp="1577256032858">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1186" height="228" key="GridCell.Tab.0.right/0.23.1440.850@0.23.1440.850" timestamp="1577256032858" />
+    <state width="1186" height="228" key="GridCell.Tab.1.bottom" timestamp="1577256019908">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1186" height="228" key="GridCell.Tab.1.bottom/0.23.1440.850@0.23.1440.850" timestamp="1577256019908" />
+    <state width="1186" height="228" key="GridCell.Tab.1.center" timestamp="1577256019907">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1186" height="228" key="GridCell.Tab.1.center/0.23.1440.850@0.23.1440.850" timestamp="1577256019907" />
+    <state width="1186" height="228" key="GridCell.Tab.1.left" timestamp="1577256019907">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1186" height="228" key="GridCell.Tab.1.left/0.23.1440.850@0.23.1440.850" timestamp="1577256019907" />
+    <state width="1186" height="228" key="GridCell.Tab.1.right" timestamp="1577256019907">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="1186" height="228" key="GridCell.Tab.1.right/0.23.1440.850@0.23.1440.850" timestamp="1577256019907" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1577252632666">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.23.1440.850@0.23.1440.850" timestamp="1577252632666" />
+    <state x="385" y="99" width="670" height="676" key="search.everywhere.popup" timestamp="1577254512249">
+      <screen x="0" y="23" width="1440" height="850" />
+    </state>
+    <state x="385" y="99" width="670" height="676" key="search.everywhere.popup/0.23.1440.850@0.23.1440.850" timestamp="1577254512249" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dealsengine/tasks.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dealsengine/tasks.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dealsengine/tasks.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pages/views.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/dealscore_django$tasks.coverage" NAME="tasks Coverage Results" MODIFIED="1577254858769" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dealsengine" />
+  </component>
+</project>
