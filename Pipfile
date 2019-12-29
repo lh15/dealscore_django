@@ -10,7 +10,6 @@ django = "==2.2.6"
 django-allauth = "==0.39.0"
 django-crispy-forms = "==1.8.0"
 django-debug-toolbar = "==2.0"
-celery = "*"
 
 [requires]
 python_version = "3.7"

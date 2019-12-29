@@ -5,7 +5,7 @@ from dealsengine import models
 
 class HomePageView(TemplateView):
     # tasks.crawl_dealnews()
-    print(models.DealLink.objects.all())
+    # print(models.DealLink.objects.all())
 
     template_name = 'pages/home.html'
 

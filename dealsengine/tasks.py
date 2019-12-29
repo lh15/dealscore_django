@@ -8,46 +8,49 @@ from celery import shared_task
 
 import json
 
-from pkg_resources import non_empty_lines
 
 from dealsengine.models import DealLink
 
 
-@shared_task
-# do some heavy stuff
+# @shared_task this is for Celery, need to configure still
 def crawl_dealnews():
-    print('Crawling data and creating objects in database ..')
-    req = Request('https://www.dealnews.com/', headers={'User-Agent': 'Mozilla/5.0'})
+    siteName = "Dealnews.com"
+    print('Crawling DealNews.com data and creating links in database ..')
+    req = Request('https://www.dealnews.com/?sort=time', headers={'User-Agent': 'Mozilla/5.0'})
     html = urlopen(req).read()
     bs = BeautifulSoup(html, 'html.parser')
-    # Find first 5 table rows
-    rows = bs.findAll('script', {'type': 'application/ld+json'})
+
+    rows  = bs.find_all('div', attrs={"class":"content-media content-view"})
     for row in rows:
-        jsonLd = row.text
+        offerId = row.attrs.get("data-id", "")
+        if DealLink.objects.filter(siteName=siteName, offerId=offerId).count() > 0:
+            print("No new deals")
+            break;
+        imgUrl = row.find("img", attrs={"class":"lazy-img-bg"}).attrs.get("data-bg-src", "")
+        offerPageLinkId = "overflow-menu-OFFER-" + offerId + "-0"
+        offerPageLink = bs.find(id=offerPageLinkId).attrs.get("href", "")
+        title = row.find("div", attrs={"class":"title"}).attrs.get("title", "")
+        # Try get Category through JsonLd. Some offers don't have
+        jsonLd = row.find('script', {'type': 'application/ld+json'}).text
         try:
             linkObj = json.loads(jsonLd)
-        except ValueError:
-            print("error")
-            break
-        print(row)
-        link = linkObj["url"]
-        imageUrl = linkObj["image"]["contentUrl"]
-        siteName = "Dealnews.com"
-        primaryCategory = linkObj["category"]["name"]
-        description = linkObj["description"]
+            primaryCategory = linkObj.get("offers")[0].get("category", {}).get("alternateName", "")
+        except (ValueError, TypeError) as error:
+            print("error: " + str(error))
+            primaryCategory = ""
 
-        print({'link': link, 'imageUrl':imageUrl, 'siteName':siteName, 'primaryCategory':primaryCategory, 'description': description})
+
+        # print(row)
+        print({'link': offerPageLink, 'imageUrl':imgUrl, 'siteName':siteName, 'primaryCategory':primaryCategory, 'description': title})
 
         # Create object in database from crawled data
         DealLink.objects.create(
-            link = link,
-            description = description,
-            imageUrl = imageUrl,
+            link = offerPageLink,
+            description = title,
+            imageUrl = imgUrl,
             siteName = siteName,
+            offerId = offerId,
             primaryCategory = primaryCategory
 
         )
         sleep(1)
-
-
-# crawl_dealnews()
