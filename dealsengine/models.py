@@ -1,6 +1,7 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import *
+
+from users.models import CustomUser
 
 
 class DealSite(models.Model):
@@ -26,11 +27,7 @@ class DealLink(models.Model):
 
     score = models.IntegerField(default=0) # aggregate of the below 3 fields
 
-    # see comment below by the Models
     # upvotes = models.ManyToManyField(User, through='Upvote')
-    # editor_upvotes = models.ManyToManyField(User, through='EditorUpvote')
-    # deallink_posts = models.ManyToManyField(User, through='DealPosts')
-    # will also need to add a deal_id to count dups
 
     class Meta:
         unique_together = ("site", "offer_id",)
@@ -38,21 +35,13 @@ class DealLink(models.Model):
     def __str__(self):
         return self.link
 
+class Vote(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    changed_at = models.DateTimeField(auto_now=True)
+    link = models.ForeignKey(DealLink, on_delete=models.CASCADE)
+    # vote = None # -1 | 0 | 1 --> BooleanField(default=None, null=True)??
+    vote = models.SmallIntegerField(default=1)
+    user = models.ForeignKey(CustomUser, related_name='votes', on_delete=models.CASCADE)
 
-# Models for the 3 components of the dealScore.
-# 1. User upvotes
-# 2. admin upvotes
-# 3. Number of times the same deal was posts around
-# class Upvote(models.Model):
-#     link = models.ForeignKey(DealLink, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, related_name='upvotes', on_delete=models.CASCADE)
-#
-#
-# class EditorUpvote(models.Model):
-#     link = models.ForeignKey(DealLink, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, related_name='editor_upvotes', on_delete=models.CASCADE)
-
-
-# class DealPosts(models.Model):
-#     link = models.ForeignKey(DealLink, on_delete=models.CASCADE)
-#     site = models.ForeignKey(DealSite, related_name='deallink_posts', on_delete=models.CASCADE)
+    class Meta:
+        unique_together = ("link", "user",)

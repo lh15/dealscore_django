@@ -4,14 +4,25 @@
 {% block title %}Home page{% endblock title %}
 
 {% block content %}
-<h1>Home page</h1>
+    <h1>Home page</h1>
     <h2>Deal Links</h2>
-    <ul>
-        {% for dealLink in dealLinks %}
-            <li>🌶️ <a href="{{ dealLink.link }}" target="_blank">{{ dealLink.title }}</a></li>
-            <p>{{ dealLink.sub_title }}</p>
-        {% endfor %}
-    </ul>
-<img src="{% static 'images/falconx.png' %}" class="img-fluid" alt="FalconX launch"/>
-{% endblock content %}
 
+    <table border="0" cellpadding="0" cellspacing="0" class="item-list outer level-0">
+        {% for deal_link in deal_links %}
+            <tbody>
+            <tr id="{{ deal_link.id }}">
+
+                <td>1. <a href="{{ deal_link.link }}" target="_blank">{{ deal_link.title }}
+                    ({{ deal_link.site.site_name }})</a></td>
+                <td><p>{{ deal_link.sub_title }}</p></td>
+                <td><img class="upvote vote_button {% if deal_link.id in user_upvotes_link_ids %}voted{% endif %}"
+                         src="{% static 'images/baby-head-outline-with-pacifier.png' %}" alt="FalconX launch"/></td>
+                <td><img class="downvote vote_button" src="{% static 'images/crying-baby.png' %}" alt="FalconX launch"/>
+                </td>
+
+            </tr>
+            </tbody>
+
+        {% endfor %}
+    </table>
+{% endblock content %}

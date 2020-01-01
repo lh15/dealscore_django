@@ -1,0 +1,27 @@
+.downvote {
+  padding-bottom: 7px;
+}
+
+.vote_button {
+    cursor: pointer;
+    width: 50px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.vote_button:hover{
+    background: gray;
+    border-radius: 10px;
+    padding: 5px;
+}
+.voted{
+    background: red;
+}
+
+.bg-dark {
+    background-color: #316DBA!important;
+}
+
+#titleImage{
+        width: 200px;
+}
