@@ -16,18 +16,19 @@ from dealsengine.models import *
 @task(name="crawl_dealnews")
 def crawl_dealnews():
     site_name = "Dealnews.com"
+    deal_site = DealSite.objects.get(site_name=site_name)
     print('Crawling DealNews.com data and creating links in database ..')
-    req = Request('https://www.dealnews.com/?sort=time', headers={'User-Agent': 'Mozilla/5.0'})
+    req = Request(deal_site.primary_crawl_url, headers={'User-Agent': 'Mozilla/5.0'})
     html = urlopen(req).read()
     bs = BeautifulSoup(html, 'html.parser')
 
     rows = bs.find_all('div', attrs={"class": "content-media content-view"})
     for row in rows:
         offer_id = row.attrs.get("data-id", "")
-        deal_site = DealSite.objects.get(site_name=site_name)
-        # if DealLink.objects.filter(site=deal_site, offer_id=offer_id).count() > 0:
-        #     print("No new deals")
-        #     break;
+
+        if DealLink.objects.filter(site=deal_site, offer_id=offer_id).count() > 0:
+            print("Not a new deal")
+            continue; #consider break; to stop the loop
         img_url = row.find("img", attrs={"class": "lazy-img-bg"}).attrs.get("data-bg-src", "")
         offer_page_link_id = "overflow-menu-OFFER-" + offer_id + "-0"
         offer_page_link = bs.find(id=offer_page_link_id).attrs.get("href", "")

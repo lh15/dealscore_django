@@ -35,6 +35,11 @@ class DealLink(models.Model):
     def __str__(self):
         return self.link
 
+    def recalculate_score(self):
+        sum = Vote.objects.filter(link=self).aggregate(Sum('vote'))
+        self.score = sum.get("vote__sum", 0)
+        self.save()
+
 class Vote(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     changed_at = models.DateTimeField(auto_now=True)
@@ -45,3 +50,8 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ("link", "user",)
+
+class LinkClick(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    link = models.ForeignKey(DealLink, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, related_name='link_clicks', on_delete=models.CASCADE, blank = True, null = True)

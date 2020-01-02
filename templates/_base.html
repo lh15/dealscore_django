@@ -67,8 +67,15 @@
   <!-- 3rd party JavaScript -->
 
   <!-- Project JS -->
-  <script src="{% static 'js/base.js' %}"></script>
+      <script src="{% static 'js/base.js' %}"></script>
+      <script type="text/javascript">
+          let is_authenticated = false;
 
+          {% if user.is_authenticated %}
+              is_authenticated = true;
+          {% endif %}
+
+      </script>
   {% endblock javascript %}
 
 </body>

@@ -13,7 +13,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
-from .models import Vote, DealLink
+from .models import Vote, DealLink, LinkClick
 
 
 class TriggerImport(View):
@@ -30,17 +30,22 @@ def _vote(request, pk, vote=None, unvote=False):
     assert not unvote and vote is not None or unvote and vote is None
     link = get_object_or_404(DealLink, pk=pk)
     if (not unvote) and (vote is not None):
+        is_upvote = vote == 1
         votes = Vote.objects.filter(link=link, user=request.user)
         if request.method == "POST":
             try:
-                vote = Vote(vote=vote, link=link, user=request.user)
-                vote.save()
-            except IntegrityError:
-                return HttpResponse("NOT OK, already voted %s" % (vote.pk))
-            return HttpResponse("OK %s" % (vote.pk))
+                if request.user.is_superuser:
+                    # make configurable...
+                    vote = 5 if is_upvote else -5
+                Vote.objects.update_or_create(link=link, user=request.user, defaults={'vote':vote})
+                link.recalculate_score()
+            except IntegrityError as error:
+                print(error)
+                return HttpResponse("NOT OK")
+            return HttpResponse("OK")
     if unvote:
         if request.method == "POST":
-            Vote.objects.filter(link=link, user=request.user).update(vote=vote, link=link, user=request.user)
+            Vote.objects.update_or_create(link=link, user=request.user, defaults={'vote':0})
             return HttpResponse("OK")
 
 
@@ -59,4 +64,14 @@ def downvote(request, pk):
 @csrf_exempt
 @login_required
 def unvote(request, pk):
-    return _vote(request, pk, vote=0, unvote=True)
+    return _vote(request, pk, unvote=True)
+
+@csrf_exempt
+def click_track(request, pk):
+    link = get_object_or_404(DealLink, pk=pk)
+    if request.user.is_authenticated:
+        LinkClick.objects.create(user=request.user, link=link)
+    else:
+        LinkClick.objects.create(link=link)
+
+    return HttpResponse("OK")

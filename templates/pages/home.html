@@ -4,20 +4,22 @@
 {% block title %}Home page{% endblock title %}
 
 {% block content %}
-    <h1>Home page</h1>
-    <h2>Deal Links</h2>
-
+    <h1>Top Baby Deals for Wed, January 1st 2020</h1>
     <table border="0" cellpadding="0" cellspacing="0" class="item-list outer level-0">
         {% for deal_link in deal_links %}
             <tbody>
             <tr id="{{ deal_link.id }}">
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    <img class="deal_image" src="{{ deal_link.image_url }}" alt="FalconX launch"/></td>
+                <td><a href="{{ deal_link.link }}" target="_blank" class="deal_link">{{ deal_link.title }}
+                    </a>({{ deal_link.site.site_name }})
+                    <p>{{ deal_link.sub_title }}</p>
+                </td>
 
-                <td>1. <a href="{{ deal_link.link }}" target="_blank">{{ deal_link.title }}
-                    ({{ deal_link.site.site_name }})</a></td>
-                <td><p>{{ deal_link.sub_title }}</p></td>
-                <td><img class="upvote vote_button {% if deal_link.id in user_upvotes_link_ids %}voted{% endif %}"
-                         src="{% static 'images/baby-head-outline-with-pacifier.png' %}" alt="FalconX launch"/></td>
-                <td><img class="downvote vote_button" src="{% static 'images/crying-baby.png' %}" alt="FalconX launch"/>
+                <td><span id="upvote_{{ deal_link.id }}" class="upvote vote_button {% if user.is_authenticated and deal_link.id in user_upvotes_link_ids %}voted{% endif %}">🤑</span>
+                         </td>
+                <td><span id="downvote_{{ deal_link.id }}" class="downvote vote_button {% if user.is_authenticated and deal_link.id in user_downvotes_link_ids %}downvoted{% endif %}">😠️️</span>
                 </td>
 
             </tr>
