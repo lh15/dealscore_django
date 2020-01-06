@@ -9,7 +9,7 @@
         {% for deal_link in deal_links %}
             <tbody>
             <tr id="{{ deal_link.id }}">
-                <td>#{{ forloop.counter }}</td>
+                <td><span class="numberCircle">#{{ forloop.counter }}</span></td>
                 <td>
                     <div>
                     <img class="deal_image img-responsive" src="{{ deal_link.image_url }}" alt="FalconX launch"/></td>
