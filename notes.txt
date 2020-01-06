@@ -1,0 +1,10 @@
+python manage.py loaddata dealsite for the fixtures initial data
+
+
+
+Leibel 9:21 PM
+For scheduled tasks:
+start redis redis-server
+start server python manage.py runserver
+start celery celery -A dealscore worker -l info  (this seems to be the actual background process that runs the taska)
+start celery beat (which seems to be the scheduler aspect) celery -A dealscore beat -l info

@@ -8,6 +8,7 @@ class DealSite(models.Model):
     site_name = models.CharField(max_length=100)
     primary_crawl_url = models.CharField(max_length=100)
     crawl_interval_mins = models.IntegerField(default=15)
+    color_hex = models.CharField(max_length=6)
 
     def __str__(self):
         return self.site_name

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from .tasks import crawl_dealnews
+from .tasks import crawl_dealnews, crawl_slickdeals
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404, HttpResponseForbidden
@@ -22,6 +22,8 @@ class TriggerImport(View):
         print(site_id)
         if site_id == "dealnews.com":
             crawl_dealnews()
+        if site_id == "Slickdeals.net":
+            crawl_slickdeals()
 
         return HttpResponse('Hello, World!' + site_id)
 

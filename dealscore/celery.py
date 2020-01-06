@@ -15,8 +15,8 @@ app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 app.conf.beat_schedule = {
-    'crawl_dealnews-every-5-seconds': {
-        'task': 'crawl_dealnews',
+    'crawl-deals-every-5-seconds': {
+        'task': 'do_the_crawl',
         'schedule': 10.0,
     },
 }

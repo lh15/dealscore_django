@@ -1,0 +1,1 @@
+web: gunicorn dealscore_django.wsgi

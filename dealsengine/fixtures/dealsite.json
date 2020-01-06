@@ -1,0 +1,42 @@
+[
+    {
+        "model": "dealsengine.dealsite",
+        "pk": 5,
+        "fields": {
+            "site_name": "Dealnews.com",
+            "primary_crawl_url": "https://www.dealnews.com/c224/Home-Garden/Babies-Kids-Items/",
+            "color_hex": "2C65AF"
+
+        }
+    },
+    {
+        "model": "dealsengine.dealsite",
+        "pk": 2,
+        "fields": {
+            "site_name": "Slickdeals.net",
+            "primary_crawl_url": "https://slickdeals.net/deals/babies/?sortby=newest&page=1",
+            "color_hex": "30383F"
+
+        }
+    },
+    {
+        "model": "dealsengine.dealsite",
+        "pk": 3,
+        "fields": {
+            "site_name": "hekrazycouponlady.com",
+            "primary_crawl_url": "https://thekrazycouponlady.com/deals/baby-deals",
+            "color_hex": "FFF000"
+
+        }
+    },
+    {
+        "model": "dealsengine.dealsite",
+        "pk": 4,
+        "fields": {
+            "site_name": "hip2save.com",
+            "primary_crawl_url": "https://hip2save.com/category/sales-deals/baby/",
+            "color_hex": "325066"
+
+        }
+    }
+]

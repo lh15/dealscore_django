@@ -12,7 +12,7 @@ $(".upvote").click(function (event) {
     }
     $.post("/engine/upvote/" + linkID, {})
         .done(function (data) {
-            $("#upvote_" + linkID).removeClass("downvoted");
+            $("#downvote_" + linkID).removeClass("downvoted");
             $("#upvote_" + linkID).addClass("voted");
         });
 });

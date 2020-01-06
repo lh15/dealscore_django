@@ -74,3 +74,62 @@ def crawl_dealnews():
 
         )
         sleep(1)
+
+
+
+@task(name="crawl_slickdeals")
+def crawl_slickdeals():
+    site_name = "Slickdeals.net"
+    deal_site = DealSite.objects.get(site_name=site_name)
+    print('Crawling Slickdeals.net data and creating links in database ..')
+    req = Request(deal_site.primary_crawl_url, headers={'User-Agent': 'Mozilla/5.0'})
+    html = urlopen(req).read()
+    bs = BeautifulSoup(html, 'html5lib')
+
+    rows = bs.find_all('li', attrs={"class": "altDeal"})
+    for row in rows:
+        offer_id = row.attrs.get("data-threadid", "")
+
+        if DealLink.objects.filter(site=deal_site, offer_id=offer_id).count() > 0:
+            print("Not a new deal")
+            continue; #consider break; to stop the loop
+        try:
+            img_url = row.find("div", attrs={"class": "imageContainer"}).img.attrs.get("data-original","")
+        except Exception as error:
+            print("error: " + str(error))
+            continue
+        offer_page_link = "https://slickdeals.net" + row.find("a", attrs={"class": "itemTitle"}).attrs.get("href", "")
+        title = row.find("a", attrs={"class": "itemTitle"}).text
+
+        print(
+            {'link': offer_page_link, 'imageUrl': img_url, 'site_name': site_name,
+             'description': title})
+        # Create object in database from crawled data
+        DealLink.objects.create(
+            link=offer_page_link,
+            title=title,
+            sub_title="",
+            image_url=img_url,
+            site=deal_site,
+            offer_id=offer_id,
+            primary_category=""
+
+        )
+        sleep(1)
+
+
+@task(name="crawl_krazy_coupon_lady")
+def crawl_krazy_coupon_lady():
+    return
+
+@task(name="crawl_hip2save")
+def crawl_hip2save():
+    return
+
+@task(name="do_the_crawl")
+def do_the_crawl():
+    crawl_dealnews()
+    crawl_slickdeals()
+    crawl_hip2save()
+    crawl_krazy_coupon_lady()
+    return
