@@ -15,6 +15,7 @@ honcho = "==0.5.0"
 django-heroku = "*"
 whitenoise = "*"
 gunicorn = "*"
+bs4 = "*"
 
 [requires]
 python_version = "3.7"
