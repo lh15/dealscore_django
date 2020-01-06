@@ -18,14 +18,14 @@ from .models import Vote, DealLink, LinkClick
 
 class TriggerImport(View):
 
-    def get(self, request, site_id, *args, **kwargs):
-        print(site_id)
-        if site_id == "dealnews.com":
+    def get(self, request, pk, *args, **kwargs):
+        print(pk)
+        if pk == 1:
             crawl_dealnews()
-        if site_id == "Slickdeals.net":
+        if pk == 2:
             crawl_slickdeals()
 
-        return HttpResponse('Hello, World!' + site_id)
+        return HttpResponse('Hello, World!' + str(pk))
 
 
 def _vote(request, pk, vote=None, unvote=False):
