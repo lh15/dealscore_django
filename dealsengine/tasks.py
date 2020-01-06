@@ -1,7 +1,6 @@
 # tasks.py
 
 from time import sleep
-import re
 
 from urllib.request import urlopen, Request
 
@@ -13,7 +12,6 @@ import json
 from dealsengine.models import *
 
 
-@task(name="crawl_dealnews")
 def crawl_dealnews():
     site_name = "Dealnews.com"
     deal_site = DealSite.objects.get(site_name=site_name)
@@ -77,14 +75,13 @@ def crawl_dealnews():
 
 
 
-@task(name="crawl_slickdeals")
 def crawl_slickdeals():
     site_name = "Slickdeals.net"
     deal_site = DealSite.objects.get(site_name=site_name)
     print('Crawling Slickdeals.net data and creating links in database ..')
     req = Request(deal_site.primary_crawl_url, headers={'User-Agent': 'Mozilla/5.0'})
     html = urlopen(req).read()
-    bs = BeautifulSoup(html, 'html5lib')
+    bs = BeautifulSoup(html, 'html.parser')
 
     rows = bs.find_all('li', attrs={"class": "altDeal"})
     for row in rows:
@@ -118,11 +115,9 @@ def crawl_slickdeals():
         sleep(1)
 
 
-@task(name="crawl_krazy_coupon_lady")
 def crawl_krazy_coupon_lady():
     return
 
-@task(name="crawl_hip2save")
 def crawl_hip2save():
     return
 

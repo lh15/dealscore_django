@@ -16,7 +16,7 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 app.conf.beat_schedule = {
     'crawl-deals-every-5-seconds': {
         'task': 'do_the_crawl',
-        'schedule': 10.0,
+        'schedule': 60.0,
     },
 }
 
