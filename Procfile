@@ -1,1 +1,2 @@
-web: gunicorn dealscore_django.wsgi
+web: gunicorn dealscore.wsgi
+worker: python manage.py celery worker --loglevel=info
