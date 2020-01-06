@@ -11,6 +11,7 @@ django-allauth = "==0.39.0"
 django-crispy-forms = "==1.8.0"
 django-debug-toolbar = "==2.0"
 celery = "*"
+honcho = "==0.5.0"
 
 [requires]
 python_version = "3.7"

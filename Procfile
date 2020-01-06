@@ -1,2 +1,3 @@
 web: gunicorn dealscore.wsgi
-worker: python manage.py celery worker --loglevel=info
+worker: celery -A dealscore worker -l info
+worker: celery -A dealscore beat -l info
