@@ -89,14 +89,10 @@ WSGI_APPLICATION = 'dealscore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# we only need the engine name, as heroku takes care of the rest
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "d95953i94gb7t8",
-        "USER": "hqmgxlwrbllaci",
-        "PASSWORD": "27a882f8677675bc8379d80474ea31d3143a65740d1d95e473d48ad617a73f39",
-        "HOST": "ec2-174-129-255-106.compute-1.amazonaws.com",
-        "PORT": "5432",
     }
 }
 
