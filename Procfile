@@ -1,1 +1,2 @@
-web: env > .env; env PYTHONUNBUFFERED=true honcho start -f Procfile.real 2>&1
+web: gunicorn dealscore.wsgi
+main_worker: celery -A dealscore worker --beat --loglevel=info
