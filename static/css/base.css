@@ -1,8 +1,13 @@
-a{
+a {
     color: #316DBA;
 }
+
+img:active {
+    transform: translate(4px, 4px);
+}
+
 .vote_button {
-      cursor: pointer;
+    cursor: pointer;
     width: 57px;
     display: inline-block;
     /* margin-right: 10px; */
@@ -13,8 +18,9 @@ a{
     line-height: 62px;
     margin: 6px;
 }
+
 .deal_image {
-        /* cursor: pointer; */
+    /* cursor: pointer; */
     width: 195px;
     /* height: 50px; */
     display: inline-block;
@@ -29,25 +35,14 @@ a{
     /* height: auto; */
     padding: 34px;
 }
-.upvote:hover,
-.voted{
-        background: #40B1B0;
-    /* background-size: 10px; */
-    border-radius: 88px;
-}
-.downvote:hover,
-.downvoted{
-        background: #F67D7D;
-    /* background-size: 10px; */
-    border-radius: 88px;
-}
+
 
 .bg-dark {
-    background-color: #316DBA!important;
+    background-color: #316DBA !important;
 }
 
-#titleImage{
-        width: 200px;
+#titleImage {
+    width: 200px;
 }
 
 .numberCircle {
@@ -62,42 +57,67 @@ a{
     font: 10px Arial, sans-serif;
 }
 
-@media only screen and (max-width: 600px) {
-  .deal_image {
-    /* cursor: pointer; */
-    width: 94px;
-    /* height: 50px; */
-    display: inline-block;
-    /* margin-right: 10px; */
-    /* margin-left: 5px; */
-    font-size: 50px;
-    text-align: center;
-    /* display: block; */
-    /* max-width: 230px; */
-    /* max-height: 95px; */
-    /* width: auto; */
-    /* height: auto; */
-    padding: 13px;
-    padding-left: 0px;
-}
-    .vote_button {
-    cursor: pointer;
-    width: 45px;
-    display: inline-block;
-    /* margin-right: 10px; */
-    /* margin-left: 5px; */
-    font-size: 45px;
-    /* text-align: center; */
-    height: 43px;
-    line-height: 53px;
-    margin: 5px;
-}
-    .upvote:hover, .voted {
+.voted {
     background: #40B1B0;
     /* background-size: 10px; */
     border-radius: 88px;
 }
-    h1{
+
+.downvoted {
+    background: #F67D7D;
+    /* background-size: 10px; */
+    border-radius: 88px;
+}
+
+@media only screen and (min-width: 600px) {
+    .upvote:hover,
+    .voted {
+        background: #40B1B0;
+        /* background-size: 10px; */
+        border-radius: 88px;
+    }
+
+    .downvote:hover,
+    .downvoted {
+        background: #F67D7D;
+        /* background-size: 10px; */
+        border-radius: 88px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .deal_image {
+        /* cursor: pointer; */
+        width: 94px;
+        /* height: 50px; */
+        display: inline-block;
+        /* margin-right: 10px; */
+        /* margin-left: 5px; */
+        font-size: 50px;
+        text-align: center;
+        /* display: block; */
+        /* max-width: 230px; */
+        /* max-height: 95px; */
+        /* width: auto; */
+        /* height: auto; */
+        padding: 13px;
+        padding-left: 0px;
+    }
+
+    .vote_button {
+        cursor: pointer;
+        width: 45px;
+        display: inline-block;
+        /* margin-right: 10px; */
+        /* margin-left: 5px; */
+        font-size: 45px;
+        /* text-align: center; */
+        height: 43px;
+        line-height: 53px;
+        margin: 5px;
+    }
+
+    h1 {
         font-size: 1.5rem;
     }
 }
