@@ -181,3 +181,9 @@ CELERY_TIMEZONE = 'UTC'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
+
+
+try:
+    from dealscore.local_settings import *
+except ImportError as e:
+    pass

@@ -4,7 +4,7 @@
 {% block title %}Home page{% endblock title %}
 
 {% block content %}
-    <h1>Top Baby Deals for {% now "l\, jS F Y" %}</h1>
+    <h2>Top baby deals ranked for {% now "l\, jS F Y" %}</h2>
     <table border="0" cellpadding="0" cellspacing="0" class="item-list outer level-0">
         {% for deal_link in deal_links %}
             <tbody>
@@ -22,11 +22,16 @@
                     <p>{{ deal_link.sub_title }}</p>
                 </td>
 
-                <td><span id="upvote_{{ deal_link.id }}"
-                          class="upvote vote_button {% if user.is_authenticated and deal_link.id in user_upvotes_link_ids %}voted{% endif %}">🤑</span>
+                <td>
+                    <img id="upvote_{{ deal_link.id }}"
+                         class="upvote vote_button {% if user.is_authenticated and deal_link.id in user_upvotes_link_ids %}voted{% endif %}"
+                         src="{% static 'images/smile.png' %}" alt="FalconX launch"/>
 
-                    <span id="downvote_{{ deal_link.id }}"
-                          class="downvote vote_button {% if user.is_authenticated and deal_link.id in user_downvotes_link_ids %}downvoted{% endif %}">😠️️</span>
+
+                    <img id="downvote_{{ deal_link.id }}"
+                         class="downvote vote_button {% if user.is_authenticated and deal_link.id in user_downvotes_link_ids %}downvoted{% endif %}"
+                         src="{% static 'images/frown.png' %}" alt="FalconX launch"/>
+                    ️️
                 </td>
 
             </tr>

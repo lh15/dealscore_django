@@ -7,11 +7,16 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="heroku-postgres" uuid="20cd27fd-a3fe-4326-b287-6c84dade6f60">
+    <data-source source="LOCAL" name="PostgreSQL - jdbc:postgresql://ec2-174-129-255-106.compute-1.amazonaws.com :5432/d95953i94gb7t8" uuid="03acf7c7-36ae-4126-b5db-b8b494d0c3b5">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>postgres://hqmgxlwrbllaci:27a882f8677675bc8379d80474ea31d3143a65740d1d95e473d48ad617a73f39@ec2-174-129-255-106.compute-1.amazonaws.com:5432/d95953i94gb7t8</jdbc-url>
+      <jdbc-url>jdbc:postgresql://ec2-174-129-255-106.compute-1.amazonaws.com:5432/d95953i94gb7t8</jdbc-url>
+      <driver-properties>
+        <property name="ssl" value="true" />
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
+        <property name="sslmode" value="verify-ca" />
+      </driver-properties>
     </data-source>
   </component>
 </project>

@@ -14,11 +14,20 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
-    <data-source name="heroku-postgres" uuid="20cd27fd-a3fe-4326-b287-6c84dade6f60">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
+    <data-source name="PostgreSQL - jdbc:postgresql://ec2-174-129-255-106.compute-1.amazonaws.com :5432/d95953i94gb7t8" uuid="03acf7c7-36ae-4126-b5db-b8b494d0c3b5">
+      <database-info product="PostgreSQL" version="11.6 (Ubuntu 11.6-1.pgdg16.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2" dbms="POSTGRES" exact-version="11.6" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>hqmgxlwrbllaci</user-name>
-      <schema-mapping />
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
     </data-source>
   </component>
 </project>

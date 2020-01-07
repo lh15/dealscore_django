@@ -38,13 +38,12 @@ $(".downvote").click(function (event) {
 });
 
 $(".deal_link").click(function (event) {
-    event.preventDefault();
     var linkID = event.target.parentNode.parentNode.id;
     $.post("/engine/click_track/" + linkID, {})
         .done(function (data) {
-          window.open(event.target.href);
+          // window.open(event.target.href);
         })
         .catch(function (data) {
-          window.open(event.target.href);
+          // window.open(event.target.href);
         });
 });
