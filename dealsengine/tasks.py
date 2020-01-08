@@ -131,7 +131,7 @@ def crawl_slickdeals():
             primary_category=""
 
         )
-        sleep(1)
+        time.sleep(1)
 
 
 def crawl_krazy_coupon_lady():
