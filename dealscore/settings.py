@@ -169,14 +169,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
 
-# CELERY STUFF
-BROKER_URL=os.environ.get('REDIS_URL', 'redis://localhost:6379')
-CELERY_RESULT_BACKEND=os.environ.get('REDIS_URL', 'redis://localhost:6379')
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'UTC'
-
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

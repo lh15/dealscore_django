@@ -5,7 +5,6 @@ from time import sleep
 from urllib.request import urlopen, Request
 
 from bs4 import BeautifulSoup, Tag
-from celery import shared_task, task
 
 import json
 
@@ -121,7 +120,6 @@ def crawl_krazy_coupon_lady():
 def crawl_hip2save():
     return
 
-@task(name="do_the_crawl")
 def do_the_crawl():
     crawl_dealnews()
     crawl_slickdeals()
