@@ -1,6 +1,6 @@
 # tasks.py
 
-from time import sleep
+import time
 
 from urllib.request import urlopen, Request
 
@@ -9,6 +9,26 @@ from bs4 import BeautifulSoup, Tag
 import json
 
 from dealsengine.models import *
+import threading
+
+
+
+def startThreadTask():
+    time.sleep(5)
+    t = threading.Thread(target=longTask)
+    t.setDaemon(True)
+    t.start()
+
+def longTask():
+    while True:
+        time.sleep(10)
+        # task = ThreadTask(task="do_the_crawl")
+        # task.save()
+        # print("Received task", task.id)
+        do_the_crawl()
+        # task.is_done = True
+        # print("Finishing task",task.id)
+        # task.save()
 
 
 def crawl_dealnews():
@@ -122,7 +142,11 @@ def crawl_hip2save():
 
 def do_the_crawl():
     crawl_dealnews()
+    time.sleep(5)
     crawl_slickdeals()
+    time.sleep(5)
     crawl_hip2save()
+    time.sleep(5)
     crawl_krazy_coupon_lady()
+    time.sleep(5)
     return

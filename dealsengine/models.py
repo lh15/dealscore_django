@@ -56,3 +56,8 @@ class LinkClick(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     link = models.ForeignKey(DealLink, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, related_name='link_clicks', on_delete=models.CASCADE, blank = True, null = True)
+
+
+class ThreadTask(models.Model):
+    task = models.CharField(max_length=30, blank=True, null=True)
+    is_done = models.BooleanField(blank=False,default=False )
