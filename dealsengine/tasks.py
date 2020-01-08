@@ -90,7 +90,7 @@ def crawl_dealnews():
             primary_category=primary_category
 
         )
-        sleep(1)
+        time.sleep(1)
 
 
 
