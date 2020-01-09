@@ -14,7 +14,7 @@ class HomePageView(TemplateView):
         context = super(HomePageView, self).get_context_data(*args, **kwargs)
         deal_links = models.DealLink.objects.select_related()\
             .filter(import_date__gt=date.today()-timedelta(days=7))\
-            .order_by('import_date', '-score')
+            .order_by('-import_date', '-score')
         context['deal_links'] = deal_links
         if self.request.user.is_authenticated:
             user_upvotes_link_ids = models.Vote.objects.filter(user=self.request.user, vote__gte=1).values_list('link_id', flat=True)

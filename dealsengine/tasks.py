@@ -27,14 +27,20 @@ def longTask():
 
 thread = threading.Thread(target=longTask)
 
-def startThreadTask():
-    time.sleep(5)
-    if not thread.is_alive():
-        thread.setDaemon(True)
-        thread.start()
-    else:
-        print("Thread is running")
 
+def startThreadTask():
+    try:
+        time.sleep(5)
+        if not thread.is_alive():
+            thread.setDaemon(True)
+            thread.start()
+        else:
+            print("Thread is running")
+    except Exception as error:
+        print(error)
+        new_thread = threading.Thread(target=longTask)
+        new_thread.setDaemon(True)
+        new_thread.start()
 
 
 def crawl_dealnews():
