@@ -6,6 +6,12 @@ img:active {
     transform: translate(4px, 4px);
 }
 
+#google_button{
+    width: 150px;
+        border: 1px solid #316DBA;
+    border-radius: .25rem;
+}
+
 .vote_button {
     cursor: pointer;
     width: 57px;
@@ -39,6 +45,44 @@ img:active {
 
 .bg-dark {
     background-color: #316DBA !important;
+
+}
+
+.row_other{
+    border-top: 1px solid lightgray;
+}
+
+.deal_link_container{
+    padding-top: 15px;
+}
+
+.page_title{
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 18px;
+}
+
+.deal_date{
+     margin-top: -6px;
+    /* margin-bottom: -53px; */
+    /* text-align: center; */
+    font-size: 9px;
+    /* position: relative; */
+    /* top: -88px; */
+    /* display: block; */
+    /* width: 31px; */
+    color: #F67D7D;
+    opacity: 0.6;
+}
+
+.navbar_bottom{
+    margin-top: 15px;
+    height: 35px;
+    line-height: 10px;
+}
+
+.navbar-brand {
+
+    font-size: 1rem;
 }
 
 #titleImage {
@@ -46,15 +90,17 @@ img:active {
 }
 
 .numberCircle {
-    border-radius: 50%;
+   border-radius: 50%;
     width: 30px;
     height: 36px;
-    padding: 8px;
+    padding: 6px;
     background: #fff;
-    border: 1px solid #666;
-    color: #666;
+    border: 1px solid #40B1B0;
+    color: #40B1B0;
     text-align: center;
     font: 10px Arial, sans-serif;
+    font-weight: 400;
+    margin-right: 5px;
 }
 
 .voted {

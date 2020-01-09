@@ -13,12 +13,6 @@ import threading
 
 
 
-def startThreadTask():
-    time.sleep(5)
-    t = threading.Thread(target=longTask)
-    t.setDaemon(True)
-    t.start()
-
 def longTask():
     while True:
         time.sleep(10)
@@ -29,6 +23,18 @@ def longTask():
         # task.is_done = True
         # print("Finishing task",task.id)
         # task.save()
+
+
+thread = threading.Thread(target=longTask)
+
+def startThreadTask():
+    time.sleep(5)
+    if not thread.is_alive():
+        thread.setDaemon(True)
+        thread.start()
+    else:
+        print("Thread is running")
+
 
 
 def crawl_dealnews():

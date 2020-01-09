@@ -1,5 +1,7 @@
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
+{% load socialaccount %}
+{% load static %}
 
 {% block title %}Log in{% endblock %}
 
@@ -9,6 +11,7 @@
   {% csrf_token %}
   {{ form|crispy }}
   <button class="btn btn-success" type="submit">Log in</button>
+<a href="{% provider_login_url 'google' %}"><img id="google_button" src="{% static 'images/btn_google_signin_light_normal_web@2x.png' %}" alt="FalconX launch"/></a>
 </form>
 <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
 {% endblock content %}

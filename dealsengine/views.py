@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from .tasks import crawl_dealnews, crawl_slickdeals
+from .tasks import *
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404, HttpResponseForbidden
@@ -20,6 +20,8 @@ class TriggerImport(View):
 
     def get(self, request, pk, *args, **kwargs):
         print(pk)
+        if pk == 0:
+            startThreadTask()
         if pk == 1:
             crawl_dealnews()
         if pk == 2:
