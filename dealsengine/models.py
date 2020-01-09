@@ -15,9 +15,9 @@ class DealSite(models.Model):
 
 
 class DealLink(models.Model):
-    link = models.CharField(max_length=200)
-    title = models.CharField(max_length=200)
-    sub_title = models.CharField(max_length=200)
+    link = models.CharField(max_length=500)
+    title = models.CharField(max_length=500)
+    sub_title = models.CharField(max_length=500)
 
     image_url = models.CharField(max_length=200)
     site = models.ForeignKey(DealSite, on_delete=SET_DEFAULT, default=0)
