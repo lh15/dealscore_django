@@ -16,7 +16,7 @@
                     <img class="deal_image img-responsive" src="{{ deal_link.image_url }}" alt="FalconX launch"/></td>
                     </div>
                 <td class="deal_link_container">
-                    {% if forloop.counter == 1 %}Top Deal!{% endif %}
+{#                    {% if forloop.counter == 1 %}<p class="deal_date">Top Deal of Day</p>{% endif %}#}
                     <a href="{{ deal_link.link }}" target="_blank" class="deal_link">{{ deal_link.title }}
                     </a>
                     <span style="color:#{{ deal_link.site.color_hex }};">({{ deal_link.site.site_name }})</span>
