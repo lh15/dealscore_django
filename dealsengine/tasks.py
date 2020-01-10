@@ -157,6 +157,7 @@ def crawl_krazy_coupon_lady():
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--incognito')
     options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
 
     if CHROMEDRIVER_PATH == '/app/.chromedriver/bin/chromedriver':
         options.binary_location = os.environ.get("GOOGLE_CHROME_SHIM", "chromedriver")
