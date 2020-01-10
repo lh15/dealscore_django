@@ -1,5 +1,5 @@
 # tasks.py
-
+import os
 import time
 
 from urllib.request import urlopen, Request
@@ -159,7 +159,7 @@ def crawl_krazy_coupon_lady():
     options.add_argument('--headless')
 
     if CHROMEDRIVER_PATH == '/app/.chromedriver/bin/chromedriver':
-        options.binary_location = GOOGLE_CHROME_PATH
+        options.binary_location = os.environ.get("GOOGLE_CHROME_BIN", "chromedriver")
         driver = webdriver.Chrome(CHROMEDRIVER_PATH, chrome_options=options)
     else:
         driver = webdriver.Chrome(CHROMEDRIVER_PATH, chrome_options=options)
