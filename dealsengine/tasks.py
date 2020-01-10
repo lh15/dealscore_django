@@ -32,7 +32,6 @@ thread = threading.Thread(target=longTask)
 
 def startThreadTask():
     try:
-        time.sleep(5)
         if not thread.is_alive():
             thread.setDaemon(True)
             thread.start()
@@ -183,11 +182,11 @@ def crawl_hip2save():
 
 def do_the_crawl():
     crawl_dealnews()
-    time.sleep(5)
+    time.sleep(20)
     crawl_slickdeals()
-    time.sleep(5)
+    time.sleep(20)
     crawl_hip2save()
-    time.sleep(5)
-    crawl_krazy_coupon_lady()
-    time.sleep(5)
+    time.sleep(20)
+    # crawl_krazy_coupon_lady()
+    # time.sleep(20)
     return
