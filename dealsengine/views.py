@@ -26,6 +26,8 @@ class TriggerImport(View):
             crawl_dealnews()
         if pk == 2:
             crawl_slickdeals()
+        if pk == 3:
+            crawl_krazy_coupon_lady()
 
         return HttpResponse('Hello, World!' + str(pk))
 

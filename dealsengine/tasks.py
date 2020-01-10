@@ -5,9 +5,11 @@ import time
 from urllib.request import urlopen, Request
 
 from bs4 import BeautifulSoup, Tag
+from selenium import webdriver
 
 import json
 
+from dealscore.settings import CHROMEDRIVER_PATH, GOOGLE_CHROME_PATH
 from dealsengine.models import *
 import threading
 
@@ -147,6 +149,31 @@ def crawl_slickdeals():
 
 
 def crawl_krazy_coupon_lady():
+    site_name = "thekrazycouponlady.com"
+    deal_site = DealSite.objects.get(site_name=site_name)
+    print('Crawling thekrazycouponlady.com data and creating links in database ..')
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--incognito')
+    options.add_argument('--headless')
+
+    if CHROMEDRIVER_PATH == '/app/.chromedriver/bin/chromedriver':
+        options.binary_location = GOOGLE_CHROME_PATH
+        driver = webdriver.Chrome(CHROMEDRIVER_PATH, chrome_options=options)
+    else:
+        driver = webdriver.Chrome(CHROMEDRIVER_PATH, chrome_options=options)
+
+    driver.get(deal_site.primary_crawl_url)
+    html = driver.page_source
+
+    bs = BeautifulSoup(html, 'html.parser')
+
+    rows = bs.find_all('div', attrs={"class": "card-default"})
+    for row in rows:
+        offer_id = row.find("div", attrs={"class": "card-title"})
+        print(str(offer_id))
+
     return
 
 def crawl_hip2save():
