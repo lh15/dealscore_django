@@ -13,6 +13,8 @@ from dealscore.settings import CHROMEDRIVER_PATH, GOOGLE_CHROME_PATH
 from dealsengine.models import *
 import threading
 
+started = False
+
 
 def simple_crawl_task():
     while True:
@@ -39,8 +41,15 @@ def selenium_crawl_task():
 
 
 def start_crawling_threads():
-    start_simple_crawl_thread()
-    start_selenium_crawl_thread()
+    global started
+    print("First started: " + str(started))
+    if not started:
+        start_simple_crawl_thread()
+        start_selenium_crawl_thread()
+        started = True
+        print("Second started: " + str(started))
+    else:
+        print("Already called start_crawling_threads")
     return
 
 
@@ -263,11 +272,11 @@ def crawl_hip2save():
 
 def do_simple_crawl():
     crawl_dealnews()
-    time.sleep(20)
+    time.sleep(60)
     crawl_slickdeals()
-    time.sleep(20)
+    time.sleep(60)
     crawl_hip2save()
-    time.sleep(20)
+    time.sleep(60)
     return
 
 
