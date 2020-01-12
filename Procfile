@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn dealscore.wsgi --noreload
+web: gunicorn dealscore.wsgi
