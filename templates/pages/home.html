@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load socialaccount %}
 
 {% block title %}Home page{% endblock title %}
 
@@ -28,19 +29,50 @@
                 <td>
                     <img id="upvote_{{ deal_link.id }}"
                          class="upvote vote_button {% if user.is_authenticated and deal_link.id in user_upvotes_link_ids %}voted{% endif %}"
-                         src="{% static 'images/smile.png' %}" alt="FalconX launch"/>
+                         src="{% static 'images/smile.png' %}" alt="FalconX launch"
+                         {% if not user.is_authenticated %}
+                         data-toggle="modal" data-target="#exampleModalCenter"
+                         {% endif %}
+                    />
 
 
                     <img id="downvote_{{ deal_link.id }}"
                          class="downvote vote_button {% if user.is_authenticated and deal_link.id in user_downvotes_link_ids %}downvoted{% endif %}"
-                         src="{% static 'images/frown.png' %}" alt="FalconX launch"/>
+                         src="{% static 'images/frown.png' %}" alt="FalconX launch"
+                         {% if not user.is_authenticated %}
+                         data-toggle="modal" data-target="#exampleModalCenter"
+                         {% endif %}
+                    />
                     ️️
                 </td>
             </tr>
         {% endfor %}
     </tbody>
     </table>
+
     <br>
     <br><br>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Please log in to vote</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <a href="{% provider_login_url 'google' %}"><img id="google_button" src="{% static 'images/btn_google_signin_light_normal_web@2x.png' %}" alt="FalconX launch"/></a>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}

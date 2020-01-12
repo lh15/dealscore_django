@@ -15,5 +15,5 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dealscore.settings')
 
 application = get_wsgi_application()
 
-from dealsengine.tasks import startThreadTask
-startThreadTask()
+from dealsengine.tasks import start_crawling_threads
+start_crawling_threads()
