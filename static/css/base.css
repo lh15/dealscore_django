@@ -1,6 +1,9 @@
 a {
     color: #316DBA;
 }
+.site_name{
+    font-size: 12px;
+}
 
 img:active {
     transform: translate(4px, 4px);

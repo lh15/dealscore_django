@@ -20,7 +20,7 @@
 {#                    {% if forloop.counter == 1 %}<p class="deal_date">Top Deal of Day</p>{% endif %}#}
                     <a href="{{ deal_link.link }}" target="_blank" class="deal_link">{{ deal_link.title }}
                     </a>
-                    <span style="color:#{{ deal_link.site.color_hex }};">({{ deal_link.site.site_name }})</span>
+                    <span class="site_name" style="color:#{{ deal_link.site.color_hex }};">({{ deal_link.site.site_name }})</span>
                     <p>{{ deal_link.sub_title }}</p>
                     <p class="deal_date">Posted {{ deal_link.import_date }}</p>
 
