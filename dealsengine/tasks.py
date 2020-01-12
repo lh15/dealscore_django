@@ -49,7 +49,7 @@ def start_simple_crawl_thread():
     try:
         if not simple_crawl_thread.is_alive():
             simple_crawl_thread.setDaemon(True)
-            print("Starting background thread")
+            print("Starting start_simple_crawl_thread background thread")
             simple_crawl_thread.start()
         else:
             print("Thread is running")
@@ -66,7 +66,7 @@ def start_selenium_crawl_thread():
     try:
         if not selenium_crawl_thread.is_alive():
             selenium_crawl_thread.setDaemon(True)
-            print("Starting background thread")
+            print("Starting start_selenium_crawl_thread background thread")
             selenium_crawl_thread.start()
         else:
             print("Thread is running")
@@ -252,6 +252,7 @@ def crawl_krazy_coupon_lady():
             )
             time.sleep(1)
     finally:
+        print("Closing chromedriver")
         driver.quit()
     return
 
