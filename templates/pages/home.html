@@ -22,7 +22,7 @@
                     </a>
                     <span class="site_name" style="color:#{{ deal_link.site.color_hex }};">({{ deal_link.site.site_name }})</span>
                     <p class="sub_title">{{ deal_link.sub_title }}</p>
-                    <p class="deal_date">Posted {{ deal_link.import_date }}</p>
+                    <p class="deal_date">Posted {% if deal_link.was_posted_today %} today {% else %}  {{ deal_link.import_date }} {% endif %}</p>
 
                 </td>
 

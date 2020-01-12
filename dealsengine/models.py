@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import *
+from datetime import date
 
 from users.models import CustomUser
 
@@ -44,6 +45,10 @@ class DealLink(models.Model):
         sum = Vote.objects.filter(link=self).aggregate(Sum('vote'))
         self.score = sum.get("vote__sum", 0)
         self.save()
+
+    @property
+    def was_posted_today(self):
+        return self.import_date == date.today()
 
 class Vote(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
