@@ -2,7 +2,7 @@
 {% load static %}
 {% load socialaccount %}
 
-{% block title %}Home page{% endblock title %}
+{% block title %}Top Baby Deal - Baby and Kids deals from around the web, ranked!{% endblock title %}
 
 {% block content %}
     <h3 class="page_title">Baby and Kids deals from around the web, ranked!</h3>
@@ -21,7 +21,7 @@
                     <a href="{{ deal_link.link }}" target="_blank" class="deal_link">{{ deal_link.title }}
                     </a>
                     <span class="site_name" style="color:#{{ deal_link.site.color_hex }};">({{ deal_link.site.site_name }})</span>
-                    <p>{{ deal_link.sub_title }}</p>
+                    <p class="sub_title">{{ deal_link.sub_title }}</p>
                     <p class="deal_date">Posted {{ deal_link.import_date }}</p>
 
                 </td>

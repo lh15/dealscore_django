@@ -2,7 +2,24 @@ a {
     color: #316DBA;
 }
 .site_name{
-    font-size: 12px;
+    font-size: 9px;
+}
+
+.beta_text{
+
+    font-style: italic;
+    font-weight: 100;
+    /* margin-left: -10px; */
+    /* margin-top: -8px; */
+    position: absolute;
+    top: 15px;
+    font-size: 15px;
+    left: 206px;
+    opacity: .7;
+}
+
+.sub_title{
+    font-size: 10px;
 }
 
 img:active {

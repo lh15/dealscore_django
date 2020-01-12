@@ -23,7 +23,7 @@
         "model": "dealsengine.dealsite",
         "pk": 3,
         "fields": {
-            "site_name": "hekrazycouponlady.com",
+            "site_name": "thekrazycouponlady.com",
             "primary_crawl_url": "https://thekrazycouponlady.com/deals/baby-deals",
             "color_hex": "FFF000"
 
@@ -36,6 +36,26 @@
             "site_name": "hip2save.com",
             "primary_crawl_url": "https://hip2save.com/category/sales-deals/baby/",
             "color_hex": "325066"
+
+        }
+    },
+    {
+        "model": "dealsengine.dealsite",
+        "pk": 5,
+        "fields": {
+            "site_name": "TopBabyDeal Exclusive!",
+            "primary_crawl_url": "",
+            "color_hex": "40B1B0"
+
+        }
+    },
+    {
+        "model": "dealsengine.dealsite",
+        "pk": 6,
+        "fields": {
+            "site_name": "camelcamelcamel.com",
+            "primary_crawl_url": "https://camelcamelcamel.com/top_drops?bn=baby-products&t=recent&i=7&s=relative&d=10.0",
+            "color_hex": "DA8327"
 
         }
     }

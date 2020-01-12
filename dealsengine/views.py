@@ -28,6 +28,10 @@ class TriggerImport(View):
             crawl_slickdeals()
         if pk == 3:
             crawl_krazy_coupon_lady()
+        if pk == 4:
+            crawl_hip2save()
+        if pk == 6:
+            crawl_camel_camel_camel()
 
         return HttpResponse('Hello, World!' + str(pk))
 

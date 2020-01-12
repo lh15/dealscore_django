@@ -150,6 +150,44 @@ def crawl_dealnews():
         time.sleep(1)
 
 
+def crawl_camel_camel_camel():
+    site_name = "camelcamelcamel.com"
+    deal_site = DealSite.objects.get(site_name=site_name)
+    print('Crawling CamelCamelCamel.com data and creating links in database ..')
+    req = Request(deal_site.primary_crawl_url, headers={'User-Agent': 'Mozilla/5.0'})
+    html = urlopen(req).read()
+    bs = BeautifulSoup(html, 'html.parser')
+
+    rows = bs.find_all('div', attrs={"class": "card"})
+    for row in rows:
+        title = row.find('a', attrs={"class": "truncy_title"}).text
+        offer_id = title
+        offer_page_link = row.find('a', attrs={"class": "truncy_title"}).attrs.get("href", "")
+        current_price = row.find('div', attrs={"class": "current_price"}).get_text()
+        compare_price = row.find('div', attrs={"class": "compare_price"}).contents[1].get_text()
+        sub_title = current_price + " was " + compare_price
+        img_url = row.find("img").attrs.get("delayed-src","")
+
+        if DealLink.objects.filter(site=deal_site, offer_id=offer_id).count() > 0:
+            print("Not a new deal")
+            continue;  # consider break; to stop the loop
+
+        print(
+            {'link': offer_page_link, 'imageUrl': img_url, 'site_name': site_name,
+             'description': title})
+        # Create object in database from crawled data
+        DealLink.objects.create(
+            link=offer_page_link,
+            title=title,
+            sub_title=sub_title,
+            image_url=img_url,
+            site=deal_site,
+            offer_id=offer_id,
+            primary_category=""
+
+        )
+        time.sleep(1)
+
 def crawl_slickdeals():
     site_name = "Slickdeals.net"
     deal_site = DealSite.objects.get(site_name=site_name)
@@ -276,6 +314,8 @@ def do_simple_crawl():
     crawl_slickdeals()
     time.sleep(60)
     crawl_hip2save()
+    time.sleep(60)
+    crawl_camel_camel_camel()
     time.sleep(60)
     return
 
