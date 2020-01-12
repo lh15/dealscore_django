@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import DealLink
+from .models import *
 
-admin.site.register(DealLink)
+myModels = [DealLink, DealSite, Vote, LinkClick, ThreadTask]  # iterable list
+admin.site.register(myModels)
