@@ -21,7 +21,7 @@ class TriggerImport(View):
     def get(self, request, pk, *args, **kwargs):
         print(pk)
         if pk == 0:
-            startThreadTask()
+            start_crawling_threads()
         if pk == 1:
             crawl_dealnews()
         if pk == 2:
