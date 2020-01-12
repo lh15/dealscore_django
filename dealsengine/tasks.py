@@ -158,7 +158,7 @@ def crawl_slickdeals():
     html = urlopen(req).read()
     bs = BeautifulSoup(html, 'html.parser')
 
-    rows = bs.find_all('li', attrs={"class": "altDeal"})
+    rows = bs.find('div', attrs={"data-module-name": "Category Deals"}).find_all('li', attrs={"class": "altDeal"})
     for row in rows:
         offer_id = row.attrs.get("data-threadid", "")
 

@@ -1,4 +1,7 @@
 $(".upvote").click(function (event) {
+    if (!is_authenticated) {
+        return;
+    }
     var linkID = event.target.parentNode.parentNode.id;
     if(event.target.classList.contains('voted')){
         $.post("/engine/unvote/" + linkID, {})
@@ -15,6 +18,9 @@ $(".upvote").click(function (event) {
 });
 
 $(".downvote").click(function (event) {
+    if (!is_authenticated) {
+        return;
+    }
     var linkID = event.target.parentNode.parentNode.id;
     if(event.target.classList.contains('downvoted')){
         $.post("/engine/unvote/" + linkID, {})

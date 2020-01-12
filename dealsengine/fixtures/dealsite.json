@@ -14,7 +14,7 @@
         "pk": 2,
         "fields": {
             "site_name": "Slickdeals.net",
-            "primary_crawl_url": "https://slickdeals.net/deals/babies/?sortby=newest&page=1",
+            "primary_crawl_url": "https://slickdeals.net/deals/children/?sortby=newest&page=1",
             "color_hex": "30383F"
 
         }
