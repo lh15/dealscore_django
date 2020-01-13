@@ -18,15 +18,16 @@ class DealSite(models.Model):
 class DealLink(models.Model):
     link = models.CharField(max_length=500)
     title = models.CharField(max_length=500)
-    sub_title = models.CharField(max_length=500)
+    sub_title = models.CharField(max_length=500, blank=True)
 
     image_url = models.CharField(max_length=200)
     site = models.ForeignKey(DealSite, on_delete=SET_DEFAULT, default=0)
     offer_id = models.CharField(max_length=100)
-    primary_category = models.CharField(max_length=100)
-    imported_at = models.DateTimeField(auto_now_add=True)
-    import_date = models.DateField(auto_now_add=True)
-    link_post_date = models.DateTimeField(null=True)
+    primary_category = models.CharField(max_length=100, blank=True)
+    imported_at = models.DateTimeField(auto_now_add=True, blank=True)
+    import_date = models.DateField(auto_now_add=True, blank=True)
+    link_post_date = models.DateTimeField(null=True, blank=True)
+    active = models.BooleanField()
 
     score = models.IntegerField(default=0) # aggregate of the below 3 fields
 

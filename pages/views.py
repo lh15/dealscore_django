@@ -13,7 +13,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(HomePageView, self).get_context_data(*args, **kwargs)
         deal_links = models.DealLink.objects.select_related()\
-            .filter(import_date__gt=date.today()-timedelta(days=7))\
+            .filter(active=True, import_date__gt=date.today()-timedelta(days=7))\
             .order_by('-import_date', '-score', '-title')
         context['deal_links'] = deal_links
         if self.request.user.is_authenticated:
