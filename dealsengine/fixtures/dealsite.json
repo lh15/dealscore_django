@@ -1,11 +1,11 @@
 [
-     {
+         {
         "model": "dealsengine.dealsite",
         "pk": 1,
         "fields": {
-            "site_name": "Dealnews.com",
-            "primary_crawl_url": "https://www.dealnews.com/c224/Home-Garden/Babies-Kids-Items/",
-            "color_hex": "2C65AF"
+            "site_name": "TopBabyDeal Exclusive!",
+            "primary_crawl_url": "",
+            "color_hex": "40B1B0"
 
         }
     },
@@ -43,12 +43,13 @@
         "model": "dealsengine.dealsite",
         "pk": 5,
         "fields": {
-            "site_name": "TopBabyDeal Exclusive!",
-            "primary_crawl_url": "",
-            "color_hex": "40B1B0"
+            "site_name": "Dealnews.com",
+            "primary_crawl_url": "https://www.dealnews.com/c224/Home-Garden/Babies-Kids-Items/",
+            "color_hex": "2C65AF"
 
         }
     },
+
     {
         "model": "dealsengine.dealsite",
         "pk": 6,

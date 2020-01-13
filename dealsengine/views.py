@@ -22,14 +22,15 @@ class TriggerImport(View):
         print(pk)
         if pk == 0:
             start_crawling_threads()
-        if pk == 1:
-            crawl_dealnews()
+
         if pk == 2:
             crawl_slickdeals()
         if pk == 3:
             crawl_krazy_coupon_lady()
         if pk == 4:
             crawl_hip2save()
+        if pk == 5:
+            crawl_dealnews()
         if pk == 6:
             crawl_camel_camel_camel()
 
