@@ -5,6 +5,7 @@ a {
     font-size: 9px;
 }
 
+
 .beta_text{
 
     font-style: italic;
@@ -19,7 +20,7 @@ a {
 }
 
 .sub_title{
-    font-size: 10px;
+    font-size: 12px;
 }
 
 img:active {
@@ -34,15 +35,14 @@ img:active {
 
 .vote_button {
     cursor: pointer;
-    width: 57px;
+    width: 50px;
     display: inline-block;
-    /* margin-right: 10px; */
-    /* margin-left: 5px; */
+    box-shadow: 2px 4px 4px #ccc;
+    border-radius: 50px;
     font-size: 52px;
     text-align: center;
-    height: 54px;
-    line-height: 62px;
-    margin: 6px;
+    height: 48px;
+    margin: 9px;
 }
 
 .deal_image {
@@ -82,14 +82,8 @@ img:active {
 }
 
 .deal_date{
-     margin-top: -6px;
-    /* margin-bottom: -53px; */
-    /* text-align: center; */
-    font-size: 9px;
-    /* position: relative; */
-    /* top: -88px; */
-    /* display: block; */
-    /* width: 31px; */
+     margin-top: -7px;
+    font-size: 13px;
     color: #F67D7D;
     opacity: 0.6;
 }
@@ -172,15 +166,14 @@ img:active {
 
     .vote_button {
         cursor: pointer;
-        width: 45px;
+        width: 43px;
         display: inline-block;
         /* margin-right: 10px; */
         /* margin-left: 5px; */
         font-size: 45px;
         /* text-align: center; */
-        height: 43px;
-        line-height: 53px;
-        margin: 5px;
+        height: 42px;
+        margin: 7px;
     }
 
     h1 {
