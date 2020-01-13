@@ -27,7 +27,7 @@ class DealLink(models.Model):
     imported_at = models.DateTimeField(auto_now_add=True, blank=True)
     import_date = models.DateField(auto_now_add=True, blank=True)
     link_post_date = models.DateTimeField(null=True, blank=True)
-    active = models.BooleanField()
+    active = models.BooleanField(default=True)
 
     score = models.IntegerField(default=0) # aggregate of the below 3 fields
 
