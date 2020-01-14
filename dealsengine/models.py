@@ -20,10 +20,10 @@ class DealLink(models.Model):
     title = models.CharField(max_length=500)
     sub_title = models.CharField(max_length=500, blank=True)
 
-    image_url = models.CharField(max_length=200)
+    image_url = models.CharField(max_length=300)
     site = models.ForeignKey(DealSite, on_delete=CASCADE)
-    offer_id = models.CharField(max_length=100)
-    primary_category = models.CharField(max_length=100, blank=True)
+    offer_id = models.CharField(max_length=300)
+    primary_category = models.CharField(max_length=300, blank=True)
     imported_at = models.DateTimeField(auto_now_add=True, blank=True)
     import_date = models.DateField(auto_now_add=True, blank=True)
     link_post_date = models.DateTimeField(null=True, blank=True)
