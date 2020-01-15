@@ -1,7 +1,9 @@
+import pytz
 from django.db import models
 from django.db.models import *
 from datetime import date
 
+from dealscore import settings
 from users.models import CustomUser
 
 
@@ -40,7 +42,7 @@ class DealLink(models.Model):
         ]
 
     def __str__(self):
-        return self.link
+        return self.imported_at.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime("%Y-%m-%d %H:%M:%S") + " - " + self.link
 
     def recalculate_score(self):
         sum = Vote.objects.filter(link=self).aggregate(Sum('vote'))
