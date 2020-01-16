@@ -25,10 +25,8 @@ class TriggerImport(View):
 
         if pk == 2:
             crawl_slickdeals()
-        if pk == 3:
-            crawl_krazy_coupon_lady()
-        if pk == 4:
-            crawl_hip2save()
+        if pk == 3 or pk == 4:
+            do_selenium_crawl()
         if pk == 5:
             crawl_dealnews()
         if pk == 6:

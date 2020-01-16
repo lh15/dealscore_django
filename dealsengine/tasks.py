@@ -34,6 +34,7 @@ def selenium_crawl_task():
         # task = ThreadTask(task="do_the_crawl")
         # task.save()
         # print("Received task", task.id)
+
         do_selenium_crawl()
         # task.is_done = True
         # print("Finishing task",task.id)
@@ -166,7 +167,7 @@ def crawl_camel_camel_camel():
         current_price = row.find('div', attrs={"class": "current_price"}).get_text()
         compare_price = row.find('div', attrs={"class": "compare_price"}).contents[1].get_text()
         sub_title = current_price + " was " + compare_price
-        img_url = row.find("img").attrs.get("delayed-src","")
+        img_url = row.find("img").attrs.get("delayed-src", "")
 
         if DealLink.objects.filter(site=deal_site, offer_id=offer_id).count() > 0:
             print("Not a new deal")
@@ -187,6 +188,7 @@ def crawl_camel_camel_camel():
 
         )
         time.sleep(1)
+
 
 def crawl_slickdeals():
     site_name = "Slickdeals.net"
@@ -228,83 +230,106 @@ def crawl_slickdeals():
         time.sleep(1)
 
 
-def crawl_krazy_coupon_lady():
+def crawl_krazy_coupon_lady(driver):
     site_name = "thekrazycouponlady.com"
     deal_site = DealSite.objects.get(site_name=site_name)
     print('Crawling thekrazycouponlady.com data and creating links in database ..')
+
+    driver.get(deal_site.primary_crawl_url)
+
     try:
-        options = webdriver.ChromeOptions()
-        options.add_argument('--ignore-certificate-errors')
-        # options.add_argument('--incognito')
-        options.add_argument('--headless')
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
-
-        if CHROMEDRIVER_PATH == '/app/.chromedriver/bin/chromedriver':
-            options.binary_location = os.environ.get("GOOGLE_CHROME_SHIM", "chromedriver")
-            driver = webdriver.Chrome(CHROMEDRIVER_PATH, chrome_options=options)
-        else:
-            driver = webdriver.Chrome(CHROMEDRIVER_PATH, chrome_options=options)
-
-        driver.implicitly_wait(20)
-        driver.get(deal_site.primary_crawl_url)
-
-
-        try:
-            driver.find_element_by_css_selector('.kcl-btn-gray').click()
-        except Exception as error:
-            print("error .kcl-btn-gray: " + str(error))
+        driver.find_element_by_css_selector('.kcl-btn-gray').click()
+    except Exception as error:
+        print("error .kcl-btn-gray: " + str(error))
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         try:
             driver.find_element_by_css_selector('.btn-load-more').click()
         except Exception as error:
             print("error .btn-load-more: " + str(error))
-        html = driver.page_source
-        # print(html)
+    html = driver.page_source
+    # print(html)
 
-        bs = BeautifulSoup(html, 'html.parser')
+    bs = BeautifulSoup(html, 'html.parser')
 
-        rows = bs.find_all('div', attrs={"class": "card-default"})
-        for row in rows:
-            offer_id = row.find("div", attrs={"class": "card-title"}).text
-            print(str(offer_id))
-            if DealLink.objects.filter(site=deal_site, offer_id=offer_id).count() > 0:
-                print("Not a new deal")
-                continue;  # consider break; to stop the loop
+    rows = bs.find_all('div', attrs={"class": "card-default"})
+    for row in rows:
+        offer_id = row.find("div", attrs={"class": "card-title"}).text
+        print(str(offer_id))
+        if DealLink.objects.filter(site=deal_site, offer_id=offer_id).count() > 0:
+            print("Not a new deal")
+            continue;  # consider break; to stop the loop
 
-            title = offer_id
-            try:
-                img_url = row.find("a", attrs={"class": "card-anchor"}).div.attrs.get("style", "") \
-                    .replace("background-image: url(\"", "", 1).replace("\");", "", 1)
-                if "hour" not in row.find("span", attrs={"class": "meta-date"}).text:
-                    print("Old deal: " + offer_id)
-                    continue
-            except Exception as error:
-                print("error: " + str(error))
+        title = offer_id
+        try:
+            img_url = row.find("a", attrs={"class": "card-anchor"}).div.attrs.get("style", "") \
+                .replace("background-image: url(\"", "", 1).replace("\");", "", 1)
+            if "hour" not in row.find("span", attrs={"class": "meta-date"}).text:
+                print("Old deal: " + offer_id)
                 continue
-            offer_page_link = row.find("a", attrs={"class": "card-anchor"}).attrs.get("href", "")
+        except Exception as error:
+            print("error: " + str(error))
+            continue
+        offer_page_link = row.find("a", attrs={"class": "card-anchor"}).attrs.get("href", "")
 
-            print(
-                {'link': offer_page_link, 'imageUrl': img_url, 'site_name': site_name,
-                 'description': title})
-            # Create object in database from crawled data
-            DealLink.objects.create(
-                link=offer_page_link,
-                title=title,
-                sub_title="",
-                image_url=img_url,
-                site=deal_site,
-                offer_id=offer_id,
-                primary_category=""
-            )
-            time.sleep(1)
-    finally:
-        print("Closing chromedriver")
-        driver.quit()
+        print(
+            {'link': offer_page_link, 'imageUrl': img_url, 'site_name': site_name,
+             'description': title})
+        # Create object in database from crawled data
+        DealLink.objects.create(
+            link=offer_page_link,
+            title=title,
+            sub_title="",
+            image_url=img_url,
+            site=deal_site,
+            offer_id=offer_id,
+            primary_category=""
+        )
+        time.sleep(1)
     return
 
 
-def crawl_hip2save():
+def crawl_hip2save(driver):
+    site_name = "hip2save.com"
+    deal_site = DealSite.objects.get(site_name=site_name)
+    print('Crawling hip2save.com data and creating links in database ..')
+
+    driver.get(deal_site.primary_crawl_url)
+
+    html = driver.page_source
+    # print(html)
+
+    bs = BeautifulSoup(html, 'html.parser')
+
+    rows = bs.find_all('article', attrs={"class": "deal"})
+    for row in rows:
+        offer_id = row.attrs.get("id","")
+        print(str(offer_id))
+        if DealLink.objects.filter(site=deal_site, offer_id=offer_id).count() > 0:
+            print("Not a new deal")
+            continue;  # consider break; to stop the loop
+
+        title = row.find("h5", attrs={"class": "entry-title"}).a.text
+        try:
+            img_url = row.find("img", attrs={"class": "jetpack-lazy-image"}).attrs.get("src", "")
+        except Exception as error:
+            print("error: " + str(error))
+            continue
+        offer_page_link = row.find("h5", attrs={"class": "entry-title"}).a.attrs.get("href", "")
+
+        print(
+            {'link': offer_page_link, 'imageUrl': img_url, 'site_name': site_name,
+             'description': title})
+        # Create object in database from crawled data
+        DealLink.objects.create(
+            link=offer_page_link,
+            title=title,
+            sub_title="",
+            image_url=img_url,
+            site=deal_site,
+            offer_id=offer_id,
+            primary_category=""
+        )
+        time.sleep(1)
     return
 
 
@@ -321,6 +346,28 @@ def do_simple_crawl():
 
 
 def do_selenium_crawl():
-    crawl_krazy_coupon_lady()
+    try:
+
+        options = webdriver.ChromeOptions()
+        options.add_argument('--ignore-certificate-errors')
+        # options.add_argument('--incognito')
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+
+        if CHROMEDRIVER_PATH == '/app/.chromedriver/bin/chromedriver':
+            options.binary_location = os.environ.get("GOOGLE_CHROME_SHIM", "chromedriver")
+            driver = webdriver.Chrome(CHROMEDRIVER_PATH, chrome_options=options)
+        else:
+            driver = webdriver.Chrome(CHROMEDRIVER_PATH, chrome_options=options)
+        driver.implicitly_wait(20)
+
+        # Crawl sites needing selenium
+        crawl_krazy_coupon_lady(driver)
+        crawl_hip2save(driver)
+    finally:
+        print("Closing chromedriver")
+        driver.quit()
+
     time.sleep(900)  # 15 min
     return
