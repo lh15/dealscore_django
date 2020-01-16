@@ -338,8 +338,6 @@ def do_simple_crawl():
     time.sleep(60)
     crawl_slickdeals()
     time.sleep(60)
-    crawl_hip2save()
-    time.sleep(60)
     crawl_camel_camel_camel()
     time.sleep(60)
     return
