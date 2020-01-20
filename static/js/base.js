@@ -2,8 +2,8 @@ $(".upvote").click(function (event) {
     if (!is_authenticated) {
         return;
     }
-    var linkID = event.target.parentNode.parentNode.id;
-    if(event.target.classList.contains('voted')){
+    var linkID = event.target.parentNode.parentNode.parentNode.id;
+    if(event.target.parentNode.classList.contains('voted')){
         $.post("/engine/unvote/" + linkID, {})
         .done(function (data) {
             $("#upvote_" + linkID).removeClass("voted");
@@ -14,6 +14,7 @@ $(".upvote").click(function (event) {
         .done(function (data) {
             $("#downvote_" + linkID).removeClass("downvoted");
             $("#upvote_" + linkID).addClass("voted");
+            $('#voted_modal').modal('show')
         });
 });
 
@@ -21,8 +22,8 @@ $(".downvote").click(function (event) {
     if (!is_authenticated) {
         return;
     }
-    var linkID = event.target.parentNode.parentNode.id;
-    if(event.target.classList.contains('downvoted')){
+    var linkID = event.target.parentNode.parentNode.parentNode.id;
+    if(event.target.parentNode.classList.contains('downvoted')){
         $.post("/engine/unvote/" + linkID, {})
         .done(function (data) {
             $("#downvote_" + linkID).removeClass("downvoted");
@@ -34,6 +35,7 @@ $(".downvote").click(function (event) {
         .done(function (data) {
             $("#upvote_" + linkID).removeClass("voted");
             $("#downvote_" + linkID).addClass("downvoted");
+            $('#voted_modal').modal('show')
         });
 });
 

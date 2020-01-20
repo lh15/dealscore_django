@@ -23,14 +23,14 @@
 {% block css %}
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% endblock %}
 </head>
 
 <body ontouchstart>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="{% url 'home' %}"><img id="titleImage" src="{% static 'images/top-baby-deal-logo.png' %}" alt="FalconX launch"/> <span class="beta_text">beta</span></a>
+      <a class="navbar-brand" href="/"><img id="titleImage" src="{% static 'images/top-baby-deal-logo.png' %}" alt="FalconX launch"/> <span class="beta_text">beta</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -64,7 +64,7 @@
   </div>
 
    <nav class="navbar fixed-bottom navbar_bottom navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">New deals ranked daily</a>
+    <a class="navbar-brand" href="#">New deals ranked daily</a> <a href="/diapers" class="navbar-brand diaper_link">Diaper Deals</a>
   </nav>
 
   {% block javascript %}

@@ -1,12 +1,13 @@
 a {
     color: #316DBA;
 }
-.site_name{
+
+.site_name {
     font-size: 9px;
 }
 
 
-.beta_text{
+.beta_text {
 
     font-style: italic;
     font-weight: 100;
@@ -19,7 +20,7 @@ a {
     opacity: .7;
 }
 
-.sub_title{
+.sub_title {
     font-size: 12px;
 }
 
@@ -27,23 +28,57 @@ img:active {
     transform: translate(4px, 4px);
 }
 
-#google_button{
+.rating {
+    display: inline-block;
+    width: 100%;
+    margin-top: 40px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.hotness_score {
+    margin-bottom: -7px;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.1px;
+}
+
+.diaper_link{
+    font-weight: 100;
+    font-style: italic;
+}
+
+.like,
+.dislike {
+    display: inline-block;
+    cursor: pointer;
+    margin: 6px 7px;
+    font-size: 33px;
+    width: 39px;
+    line-height: 35px;
+}
+
+
+
+
+.voted {
+    color: #40B1B0;
+}
+
+.downvoted {
+    color: #F67D7D;
+}
+
+.active {
+    color: #2EBDD1;
+}
+
+#google_button {
     width: 150px;
-        border: 1px solid #316DBA;
+    border: 1px solid #316DBA;
     border-radius: .25rem;
 }
 
-.vote_button {
-    cursor: pointer;
-    width: 50px;
-    display: inline-block;
-    box-shadow: 2px 4px 4px #ccc;
-    border-radius: 50px;
-    font-size: 52px;
-    text-align: center;
-    height: 48px;
-    margin: 9px;
-}
 
 .deal_image {
     /* cursor: pointer; */
@@ -68,27 +103,28 @@ img:active {
 
 }
 
-.row_other{
+.row_other {
     border-top: 1px solid lightgray;
 }
 
-.deal_link_container{
+.deal_link_container {
     padding-top: 15px;
+    padding-right: 10px;
 }
 
-.page_title{
+.page_title {
     border-bottom: 1px solid lightgray;
     padding-bottom: 18px;
 }
 
-.deal_date{
-     margin-top: -7px;
+.deal_date {
+    margin-top: -7px;
     font-size: 13px;
     color: #F67D7D;
     opacity: 0.6;
 }
 
-.navbar_bottom{
+.navbar_bottom {
     margin-top: 15px;
     height: 35px;
     line-height: 10px;
@@ -104,7 +140,7 @@ img:active {
 }
 
 .numberCircle {
-   border-radius: 50%;
+    border-radius: 50%;
     width: 30px;
     height: 36px;
     padding: 6px;
@@ -117,31 +153,31 @@ img:active {
     margin-right: 5px;
 }
 
-.voted {
-    background: #40B1B0;
-    /* background-size: 10px; */
-    border-radius: 88px;
-}
-
-.downvoted {
-    background: #F67D7D;
-    /* background-size: 10px; */
-    border-radius: 88px;
-}
-
 @media only screen and (min-width: 600px) {
     .upvote:hover,
     .voted {
-        background: #40B1B0;
-        /* background-size: 10px; */
-        border-radius: 88px;
+        cursor: pointer;
     }
 
     .downvote:hover,
     .downvoted {
-        background: #F67D7D;
-        /* background-size: 10px; */
-        border-radius: 88px;
+        cursor: pointer;
+    }
+    .like:hover {
+    color: #40B1B0;
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+}
+
+.dislike:hover {
+    color: #F67D7D;
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+}
+
+    .like,
+    .dislike {
+        font-size: 45px;
     }
 }
 
@@ -164,20 +200,11 @@ img:active {
         padding-left: 0px;
     }
 
-    .vote_button {
-        cursor: pointer;
-        width: 43px;
-        display: inline-block;
-        /* margin-right: 10px; */
-        /* margin-left: 5px; */
-        font-size: 45px;
-        /* text-align: center; */
-        height: 42px;
-        margin: 7px;
-    }
 
     h1 {
         font-size: 1.5rem;
     }
+
+
 }
 

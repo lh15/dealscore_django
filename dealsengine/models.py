@@ -1,7 +1,7 @@
 import pytz
 from django.db import models
 from django.db.models import *
-from datetime import date
+from datetime import date, timedelta
 
 from dealscore import settings
 from users.models import CustomUser
@@ -35,6 +35,8 @@ class DealLink(models.Model):
 
     # upvotes = models.ManyToManyField(User, through='Upvote')
 
+    highest_score = None
+
     class Meta:
         unique_together = ("site", "offer_id",)
         indexes = [
@@ -48,10 +50,26 @@ class DealLink(models.Model):
         sum = Vote.objects.filter(link=self).aggregate(Sum('vote'))
         self.score = sum.get("vote__sum", 0)
         self.save()
+        DealLink.highest_score = DealLink.objects.select_related() \
+            .filter(active=True, import_date__gt=date.today() - timedelta(days=7)) \
+            .order_by('-score')[:1][0].score
+
 
     @property
     def was_posted_today(self):
         return self.import_date == date.today()
+
+    @property
+    def get_hotness_score(self):
+        scoree = self.score
+        if DealLink.highest_score is None:
+            DealLink.highest_score = DealLink.objects.select_related() \
+                                         .filter(active=True, import_date__gt=date.today() - timedelta(days=7)) \
+                                         .order_by('-score')[:1][0].score
+        if scoree== 0:
+            scoree = 1
+        divide_by = DealLink.highest_score if DealLink.highest_score > 0 else 1
+        return int((scoree / divide_by) * 100)
 
 class Vote(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

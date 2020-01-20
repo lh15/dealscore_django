@@ -5,7 +5,7 @@
 {% block title %}Top Baby Deal - Baby and Kids deals from around the web, ranked!{% endblock title %}
 
 {% block content %}
-    <h3 class="page_title">Baby and Kids deals from around the web, ranked!</h3>
+    <h3 class="page_title">{{ page_title }}</h3>
     <table border="0" cellpadding="0" cellspacing="0" class="item-list outer level-0">
          <tbody>
         {% for deal_link in deal_links %}
@@ -27,23 +27,24 @@
                 </td>
 
                 <td>
-                    <img id="upvote_{{ deal_link.id }}"
-                         class="upvote vote_button {% if user.is_authenticated and deal_link.id in user_upvotes_link_ids %}voted{% endif %}"
-                         src="{% static 'images/smile.png' %}" alt="FalconX launch"
-                         {% if not user.is_authenticated %}
+                    <!-- Thumbs up -->
+                      <div class="like grow upvote  {% if user.is_authenticated and deal_link.id in user_upvotes_link_ids %}voted{% endif %}" id="upvote_{{ deal_link.id }}"
+                      {% if not user.is_authenticated %}
                          data-toggle="modal" data-target="#exampleModalCenter"
-                         {% endif %}
-                    />
+                         {% endif %}>
+                        <i class="fa fa-thumbs-up fa-3x like" aria-hidden="true"></i>
+                      </div>
 
+                    <p class="hotness_score">🌶️{{ deal_link.get_hotness_score }}%</p>
 
-                    <img id="downvote_{{ deal_link.id }}"
-                         class="downvote vote_button {% if user.is_authenticated and deal_link.id in user_downvotes_link_ids %}downvoted{% endif %}"
-                         src="{% static 'images/frown.png' %}" alt="FalconX launch"
-                         {% if not user.is_authenticated %}
+                    <!-- Thumbs down -->
+                      <div class="like grow downvote  {% if user.is_authenticated and deal_link.id in user_downvotes_link_ids %}downvoted{% endif %}" id="downvote_{{ deal_link.id }}"
+                      {% if not user.is_authenticated %}
                          data-toggle="modal" data-target="#exampleModalCenter"
-                         {% endif %}
-                    />
-                    ️️
+                         {% endif %}>
+                        <i class="fa fa-thumbs-down fa-3x dislike" aria-hidden="true"></i>
+                      </div>
+
                 </td>
             </tr>
         {% endfor %}
@@ -70,6 +71,29 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     <a href="{% provider_login_url 'google' %}"><img id="google_button" src="{% static 'images/btn_google_signin_light_normal_web@2x.png' %}" alt="FalconX launch"/></a>
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Small modal -->
+<div id="voted_modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thank you for voting!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Your vote helps your fellow deal hunters find the best deals!
+        <br>
+            Refresh the page to see the updated deal score.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

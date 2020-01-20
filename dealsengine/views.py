@@ -55,6 +55,7 @@ def _vote(request, pk, vote=None, unvote=False):
     if unvote:
         if request.method == "POST":
             Vote.objects.update_or_create(link=link, user=request.user, defaults={'vote':0})
+            link.recalculate_score()
             return HttpResponse("OK")
 
 
