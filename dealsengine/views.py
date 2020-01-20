@@ -46,7 +46,7 @@ def _vote(request, pk, vote=None, unvote=False):
                 if request.user.is_superuser:
                     # make configurable...
                     vote = 5 if is_upvote else -5
-                Vote.objects.update_or_create(link=link, user=request.user, defaults={'vote':vote})
+                Vote.objects.update_or_create(link=link, user=request.user, defaults={'user': request.user, 'vote':vote})
                 link.recalculate_score()
             except IntegrityError as error:
                 print(error)
@@ -54,7 +54,7 @@ def _vote(request, pk, vote=None, unvote=False):
             return HttpResponse("OK")
     if unvote:
         if request.method == "POST":
-            Vote.objects.update_or_create(link=link, user=request.user, defaults={'vote':0})
+            Vote.objects.update_or_create(link=link, user=request.user, defaults={'user': request.user, 'vote':0})
             link.recalculate_score()
             return HttpResponse("OK")
 
