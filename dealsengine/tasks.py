@@ -334,7 +334,7 @@ def crawl_hip2save(driver):
 
 
 def do_simple_crawl():
-    crawl_dealnews()
+    try:
     time.sleep(60)
     crawl_slickdeals()
     time.sleep(60)
