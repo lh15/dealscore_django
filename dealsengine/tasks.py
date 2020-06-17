@@ -335,10 +335,19 @@ def crawl_hip2save(driver):
 
 def do_simple_crawl():
     try:
+        crawl_dealnews()
+    except Exception as error:
+        print("error: in crawl_dealnews()" + str(error))
     time.sleep(60)
-    crawl_slickdeals()
+    try:
+        crawl_slickdeals()
+    except Exception as error:
+        print("error: in crawl_slickdeals()" + str(error))
     time.sleep(60)
-    crawl_camel_camel_camel()
+    try:
+        crawl_camel_camel_camel()
+    except Exception as error:
+        print("error: in crawl_camel_camel_camel()" + str(error))
     time.sleep(60)
     return
 
@@ -361,8 +370,14 @@ def do_selenium_crawl():
         driver.implicitly_wait(20)
 
         # Crawl sites needing selenium
-        crawl_krazy_coupon_lady(driver)
-        crawl_hip2save(driver)
+        try:
+            crawl_krazy_coupon_lady(driver)
+        except Exception as error:
+            print("error: in crawl_krazy_coupon_lady()" + str(error))
+        try:
+            crawl_hip2save(driver)
+        except Exception as error:
+            print("error: in crawl_krazy_coupon_lady()" + str(error))
     finally:
         print("Closing chromedriver")
         driver.quit()
