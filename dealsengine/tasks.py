@@ -12,11 +12,17 @@ import json
 from dealscore.settings import CHROMEDRIVER_PATH, GOOGLE_CHROME_PATH
 from dealsengine.models import *
 import threading
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 started = False
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 
 def simple_crawl_task():
+    print('testing google')
+    driver.get('https://www.google.com/')
+    print('tested google with selenium:' + driver.page_source)
     while True:
         time.sleep(10)
         # task = ThreadTask(task="do_the_crawl")
